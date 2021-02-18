@@ -1,46 +1,46 @@
-// Задание
-// Функция getCommonElements(firstArray, secondArray) принимает
-//  два массива произвольной длины в параметры firstArray и secondArray,
-//   и возвращает новый массив их общих элементов, то есть тех которые
-// есть
-//    в обоих массивах.
+// Напиши скрипт для создания галлереи изображений по массиву данных.
 
-// Выполни рефакторинг функции так, чтобы вместо цикла for она
-// использовала
-//  метод forEach.
+// В HTML есть список ul#gallery.
 
-// Тесты
-// Объявлена функция getCommonElements(firstArray, secondArray).
-// Для перебора параметра (массива) использован метод forEach.
-// Вызов getCommonElements([1, 2, 3], [2, 4]) возвращает [2].
-// Вызов getCommonElements([1, 2, 3], [2, 1, 17, 19]) возвращает [1, 2].
-// Вызов getCommonElements([24, 12, 27, 3], [12, 8, 3, 36, 27])
-//  возвращает [12, 27, 3].
-// Вызов getCommonElements([10, 20, 30, 40], [4, 30, 17, 10, 40])
-//  возвращает [10, 30, 40].
-// Вызов getCommonElements([1, 2, 3], [10, 20, 30]) возвращает [].
-// Вызов функции со случайными, но валидными аргументами, возвращает
-//  правильное значение.
+// <ul id="gallery"></ul>
+// Используй массив объектов images для создания тегов img вложенных в li.
+//  Для создания разметки используй шаблонные строки и insertAdjacentHTML().
 
-function getCommonElements(firstArray, secondArray) {
-  const commonElements = [];
-  // Пиши код ниже этой строки
+// Все элементы галереи должны добавляться в DOM за одну операцию вставки.
+// Добавь минимальное оформление галереи флексбоксами или гридами через
+//  css-классы.
+const images = [
+  {
+    url:
+      'https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'White and Black Long Fur Cat' ,
+  },
+  {
+    url:
+      'https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'Orange and White Koi Fish Near Yellow Koi Fish' ,
+  },
+  {
+    url:
+      'https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt:"Group of Horses Running" ,
+  },
+];
 
-  firstArray.forEach((number) => {
-    secondArray.includes(number)
-    ? commonElements.push(number)
-    : []
-  }
-  )
-
+const makeTamplateGellary = attributesGellary => {
+  const {url, alt} = attributesGellary;
+  return `<li class="image-item"><img src="${url}" alt="${alt}"/></li>`;
   
+  
+};
 
-  return commonElements;
-  // Пиши код выше этой строки
-}
+const imagesGellery = document.querySelector('#gallery')
+console.log(imagesGellery);
+const tamplateGellary = images
+.map(makeTamplateGellary)
+.join('')
 
-console.log(getCommonElements([1, 2, 3], [2, 4]));//возвращает [2]
-console.log(getCommonElements([1, 2, 3], [2, 1, 17, 19]) );//возвращает [1, 2]
-console.log(getCommonElements([24, 12, 27, 3], [12, 8, 3, 36, 27]));//  возвращает [12, 27, 3]
-console.log(getCommonElements([10, 20, 30, 40], [4, 30, 17, 10, 40]));//  возвращает [10, 30, 40].
-console.log(getCommonElements([1, 2, 3], [10, 20, 30]));//возвращает [].
+imagesGellery.insertAdjacentHTML('afterbegin', tamplateGellary);
+
+console.log(tamplateGellary);
+

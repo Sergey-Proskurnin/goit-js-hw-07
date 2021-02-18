@@ -1,45 +1,35 @@
-// Задание
-// Функция filterArray(numbers, value) принимает массив
-//  чисел numbers и возвращает новый массив, в котором будут
-//   только те элементы оригинального массива, которые больше
-//    чем значение параметра value.
+// В HTML есть пустой список ul#ingredients.
 
-// Выполни рефакторинг функции так, чтобы вместо цикла for она
-//  использовала метод forEach.
+// В JS есть массив строк.
 
-// Тесты
-// Объявлена функция filterArray(numbers, value).
-// Для перебора массива numbers использован метод forEach.
-// Вызов функции filterArray([1, 2, 3, 4, 5], 3) возвращает [4, 5].
-// Вызов функции filterArray([1, 2, 3, 4, 5], 4) возвращает [5].
-// Вызов функции filterArray([1, 2, 3, 4, 5], 5) возвращает [].
-// Вызов функции filterArray([12, 24, 8, 41, 76], 38)
-//  возвращает [41, 76].
-// Вызов функции filterArray([12, 24, 8, 41, 76], 20)
-//  возвращает [24, 41, 76].
-// Вызов функции со случайными, но валидными аргументами,
-//  возвращает правильное значение.
+// Напиши скрипт, который для каждого элемента массива
+//  ingredients создаст отдельный li, после чего вставит все li за
+//   одну операцию в список ul.ingredients. Для создания DOM-узлов
+//    используй document.createElement().
 
- function filterArray(numbers, value) {
-  const filteredNumbers = [];
-  // Пиши код ниже этой строки
-  
-
-  numbers.forEach(function(number) {
-    number > value
-    ? filteredNumbers.push(number)
-    : []
+const ingredients = [
+  'Картошка',
+  'Грибы',
+  'Чеснок',
+  'Помидоры',
+  'Зелень',
+  'Приправы',
+];
+const ingredientsList = document.querySelector('#ingredients');
+console.log(ingredientsList);
+// const newItemList = document.createElement('li');
+// console.log(newItemList);
+// newItemList.classList.add('list-item');
+// newItemList.textContent = ingredient;
+const makeIngredientsItemOption = newIngredients => {
+  return newIngredients.map((ingredient, i) => {
+    const newItemList = document.createElement('li');
+    newItemList.classList.add('list-item');
+    newItemList.textContent = `${ingredient}`;
+    return newItemList;
   });
-  
-  
-  
+};
 
-  // Пиши код выше этой строки
-  return filteredNumbers;
-}
+const ingredientsItem = makeIngredientsItemOption(ingredients);
 
-console.log(filterArray([1, 2, 3, 4, 5], 3));//возвращает [4, 5].
-console.log(filterArray([1, 2, 3, 4, 5], 4));//возвращает [5].
-console.log(filterArray([1, 2, 3, 4, 5], 5));//возвращает [].
-console.log(filterArray([12, 24, 8, 41, 76], 38));//возвращает [41, 76].
-console.log(filterArray([12, 24, 8, 41, 76], 20));//  возвращает [24, 41, 76])
+ingredientsList.append(...ingredientsItem);
