@@ -1,22 +1,21 @@
-// Задание
-// Выполни рефакторинг функции calculateTotalPrice() так, чтобы она
-//  была объявлена как стрелочная.
+// Задание 5
+// Напиши скрипт который, при наборе текста в инпуте
+//  input#name-input (событие input), подставляет его текущее значение
+//   в span#name-output. Если инпут пустой, в спане должна отображаться строка 'незнакомец'.
 
-// Тесты
-// Объявлена переменная calculateTotalPrice.
-// Переменной calculateTotalPrice присвоена стрелочная функция
-//  с параметрами (quantity, pricePerItem).
-// В функции использован неявный возврат.
-// Вызов calculateTotalPrice(5, 100) возвращает 500.
-// Вызов calculateTotalPrice(8, 60) возвращает 480.
-// Вызов calculateTotalPrice('3, 400) возвращает 1200.
-// Вызов функции со случайными, но валидными аргументами,
-//  возвращает правильное значение.
+// <input type="text" placeholder="Ваше имя?" id="name-input" />
+// <h1>Привет, <span id="name-output">незнакомец</span>!</h1>
 
-// Пиши код ниже этой строки
-const calculateTotalPrice = (quantity, pricePerItem) => quantity * pricePerItem;
-  // Пиши код выше этой строки
+const ref = {
+  input: document.querySelector('#name-input'),
+  textSpan: document.querySelector('#name-output'),
+};
 
-console.log(calculateTotalPrice(5, 100));//возвращает 500.
-console.log(calculateTotalPrice(8, 60));//возвращает 480.
-console.log(calculateTotalPrice(3, 400));//возвращает 1200.
+ref.input.addEventListener('input', onInputChange);
+
+function onInputChange(event) {
+  if (event.currentTarget.value === '') {
+    return (ref.textSpan.textContent = 'незнакомец');
+  }
+  return (ref.textSpan.textContent = event.currentTarget.value);
+}

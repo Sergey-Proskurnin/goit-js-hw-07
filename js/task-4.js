@@ -1,25 +1,36 @@
-// Задание
-// Выполни рефакторинг функции calculateTotalPrice() так, чтобы
-//  она была объявлена как стрелочная.
+// Задание 4
+// Счетчик состоит из спана и кнопок, которые должны увеличивать и уменьшать значение счетчика на 1.
 
-// Тесты
-// Объявлена переменная calculateTotalPrice.
-// Переменной calculateTotalPrice присвоена стрелочная функция
-//  с параметрами (quantity, pricePerItem).
-// Вызов calculateTotalPrice(5, 100) возвращает 500.
-// Вызов calculateTotalPrice(8, 60) возвращает 480.
-// Вызов calculateTotalPrice(3, 400) возвращает 1200.
-// Вызов функции со случайными, но валидными аргументами, возвращает
-//  правильное значение.
+// Создай переменную counterValue в которой будет хранится текущее значение счетчика.
+// Создай функции increment и decrement для увеличения и уменьшения значения счетчика
+// Добавь слушатели кликов на кнопки, вызовы функций и обновление интерфейса
+// {/* <div id="counter">
+//   <button type="button" data-action="decrement">-1</button>
+//   <span id="value">0</span>
+//   <button type="button" data-action="increment">+1</button>
+// </div> */}
 
-// Пиши код ниже этой строки
+let counterValue = 0;
 
-const calculateTotalPrice = (quantity, pricePerItem) => {
-    // Пиши код выше этой строки
-    return quantity * pricePerItem;
-  }
-  
-  console.log(calculateTotalPrice(5, 100)); //возвращает 500.
-  console.log(calculateTotalPrice(8, 60));//возвращает 480.
-  console.log(calculateTotalPrice(3, 400));//возвращает 1200.
-  
+const ref = {
+  decreaseValueBtn: document.querySelector('[data-action="decrement"]'),
+  increaseValueBtn: document.querySelector('[data-action="increment"]'),
+  valueCounterSpan: document.querySelector('#value'),
+};
+
+ref.increaseValueBtn.addEventListener('click', incrementValue);
+ref.decreaseValueBtn.addEventListener('click', decrementValue);
+
+function incrementValue() {
+  counterValue += 1;
+  renewalValue();
+}
+
+function decrementValue() {
+  counterValue -= 1;
+  renewalValue();
+}
+
+function renewalValue() {
+  ref.valueCounterSpan.textContent = counterValue;
+}
