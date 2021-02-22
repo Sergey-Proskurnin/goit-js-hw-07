@@ -1,36 +1,20 @@
-// Задание
-// Замени объявление функции filterArray() и коллбек для
-//  метода forEach() на стрелочные функции.
+// Задание 7
+// Напиши скрипт, который реагирует на изменение значения input#font-size-control (событие input)
+//  и изменяет инлайн-стиль span#text обновляя свойство font-size. В результате при перетаскивании
+//   ползунка будет меняться размер текста.
 
-// Тесты
-// Объявлена переменная filterArray.
-// Переменной filterArray присвоена стрелочная функция с параметрами
-//  (numbers, value).
-// Для перебора массива numbers использован метод forEach.
-// Коллбек для метода forEach это стрелочная функция.
-// Вызов функции filterArray([1, 2, 3, 4, 5], 3) возвращает [4, 5].
-// Вызов функции filterArray([1, 2, 3, 4, 5], 4) возвращает [5].
-// Вызов функции filterArray([1, 2, 3, 4, 5], 5) возвращает [].
-// Вызов функции filterArray([12, 24, 8, 41, 76], 38) возвращает
-//  [41, 76].
-// Вызов функции filterArray([12, 24, 8, 41, 76], 20) возвращает
-//  [24, 41, 76].
-// Вызов функции со случайными, но валидными аргументами, возвращает
-//  правильное значение.
+// <input id="font-size-control" type="range" />
+// <br />
+// <span id="text">Абракадабра!</span>
 
-// Пиши код ниже этой строки
-const filterArray = (numbers, value) => {
-  const filteredNumbers = [];
+const input = document.querySelector('#font-size-control')
+// console.dir(input);
+const span = document.querySelector('#text')
+input.addEventListener('input', onInputRange);
 
-  numbers.forEach(number => {
-    number > value ? filteredNumbers.push(number) : [];
-  });
-
-  // Пиши код выше этой строки
-  return filteredNumbers;
-};
-console.log(filterArray([1, 2, 3, 4, 5], 3)); //возвращает [4, 5].
-console.log(filterArray([1, 2, 3, 4, 5], 4)); //возвращает [5].
-console.log(filterArray([1, 2, 3, 4, 5], 5)); //возвращает [].
-console.log(filterArray([12, 24, 8, 41, 76], 38)); //возвращает [41, 76]..
-console.log(filterArray([12, 24, 8, 41, 76], 20)); //возвращает [24, 41, 76]
+function onInputRange(evens) {
+  let startValueRenge = +evens.target.value;
+  // console.log(startValueRenge);
+  span.style.fontSize = `${startValueRenge + 50}%`
+  // console.log(span);
+}

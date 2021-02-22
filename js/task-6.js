@@ -1,33 +1,50 @@
-// Задание
-// Выполни рефакторинг функции calculateTotalPrice(orderedItems)
-//  заменив её объявление на стрелочную функцию. Замени коллбек-функцию
-//   передаваемую в метод forEach() на стрелочную функцию.
+// Задание 6
+// Напиши скрипт, который бы при потере фокуса на инпуте, проверял его содержимое на правильное количество символов.
 
-// Тесты
-// Объявлена переменная calculateTotalPrice.
-// Переменной calculateTotalPrice присвоена стрелочная функция с
-//  параметром (orderedItems).
-// Для перебора массива orderedItems использован метод forEach.
-// Коллбек для метода forEach это стрелочная функция.
-// Вызов функции calculateTotalPrice([12, 85, 37, 4]) возвращает 138.
-// Вызов функции calculateTotalPrice([164, 48, 291]) возвращает 503.
-// Вызов функции calculateTotalPrice([412, 371, 94, 63, 176]) возвращает
-//  1116.
-// Вызов функции со случайными, но валидными аргументами, возвращает
-//  правильное значение.
+// <input
+//   type="text"
+//   id="validation-input"
+//   data-length="6"
+//   placeholder="Введи 6 символов"
+// />
+// Сколько символов должно быть в инпуте, указывается в его атрибуте data-length.
+// Если введено подходящее количество, то border инпута становится зеленым, если неправильное - красным.
+// Для добавления стилей, используй CSS-классы valid и invalid.
 
-// Пиши код ниже этой строки
+// #validation-input {
+//   border: 3px solid #bdbdbd;
+// }
 
-const calculateTotalPrice = orderedItems => {
-  let totalPrice = 0;
+// #validation-input.valid {
+//   border-color: #4caf50;
+// }
 
-  orderedItems.forEach(item => (totalPrice += item));
+// #validation-input.invalid {
+//   border-color: #f44336;
+// }
 
-  return totalPrice;
-};
+const input = document.querySelector('#validation-input');
+const minInputlength = +input.getAttribute('data-length');
+// console.log(input);
+// console.log(minInputlength);
+// input.addEventListener('focus', onInputFocus);
+input.addEventListener('blur', onInputBlur);
 
-// Пиши код выше этой строки
-console.log(calculateTotalPrice([12, 85, 37, 4]));//возвращает 138.
-console.log(calculateTotalPrice([164, 48, 291]));//возвращает 503.
-console.log(calculateTotalPrice([412, 371, 94, 63, 176]));//возвращает
-//  1116.
+function onInputBlur(event) {
+  // console.log('Инпут потерял фокус - событие blur');
+  let inputValue = event.target.value.length;
+  // console.log(inputValue);
+  // console.dir(event.target);
+  if (inputValue === minInputlength) {
+    event.target.classList.add('valid');
+    event.target.classList.remove('invalid');
+  }
+  if (inputValue !== minInputlength) {
+    event.target.classList.add('invalid');
+    event.target.classList.remove('valid');
+  }
+  if (inputValue === 0) {
+    event.target.classList.remove('valid');
+    event.target.classList.remove('invalid');
+  }
+}
