@@ -29,7 +29,7 @@ const images = [
 
 const makeTamplateGellary = attributesGellary => {
   const { url, alt } = attributesGellary;
-  return `<li class="image-item"><img src="${url}" alt="${alt}"/></li>`;
+  return `<li class="image-item"><img src="${url}" alt="${alt}" width = 570/></li>`;
 };
 
 const imagesGellery = document.querySelector('#gallery');
