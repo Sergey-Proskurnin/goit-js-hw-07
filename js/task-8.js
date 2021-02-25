@@ -4,11 +4,6 @@ const btnToСreate = inputValue.nextElementSibling;
 const btnToClear = btnToСreate.nextElementSibling;
 const boxesWrapper = document.querySelector('#boxes');
 
-console.log(inputValue);
-console.log(boxesWrapper);
-console.log(btnToСreate);
-console.log(btnToClear);
-
 let amount;
 inputValue.addEventListener('input', onVelueBoxes);
 
