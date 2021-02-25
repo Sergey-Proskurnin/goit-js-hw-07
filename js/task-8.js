@@ -1,40 +1,44 @@
-// Задание
-// Замени объявление функции getCommonElements() и коллбек для метода
-//  forEach() на стрелочные функции.
+const inputWrapper = document.querySelector('#controls');
+const inputValue = inputWrapper.firstElementChild;
+const btnToСreate = inputValue.nextElementSibling;
+const btnToClear = btnToСreate.nextElementSibling;
+const boxesWrapper = document.querySelector('#boxes');
 
-// Тесты
-// -Объявлена переменная getCommonElements.
+console.log(inputValue);
+console.log(boxesWrapper);
+console.log(btnToСreate);
+console.log(btnToClear);
 
-// Переменной getCommonElements присвоена стрелочная функция
-//  с параметрами (firstArray, secondArray).
-// Для перебора массива firstArray использован метод forEach.
-// Коллбек для метода forEach это стрелочная функция.
-// Вызов getCommonElements([1, 2, 3], [2, 4])
-//  возвращает [2].
-// Вызов getCommonElements([1, 2, 3], [2, 1, 17, 19])
-//  возвращает [1, 2].
-// Вызов getCommonElements([24, 12, 27, 3], [12, 8, 3, 36, 27])
-//  возвращает [12, 27, 3].
-// Вызов getCommonElements([10, 20, 30, 40], [4, 30, 17, 10, 40])
-//  возвращает [10, 30, 40].
-// Вызов getCommonElements([1, 2, 3], [10, 20, 30])
-//  возвращает [].
-// Вызов функции со случайными, но валидными аргументами,
-//  возвращает правильное значение.
+let amount;
+inputValue.addEventListener('input', onVelueBoxes);
 
-// Пиши код ниже этой строки
-const getCommonElements = (firstArray, secondArray) => {
-  const commonElements = [];
+function onVelueBoxes(evens) {
+  amount = +evens.target.value;
+  return amount;
+}
 
-  firstArray.forEach(element => {
-    secondArray.includes(element) ? commonElements.push(element) : [];
-  });
-  // Пиши код выше этой строки
-  return commonElements;
-};
+btnToСreate.addEventListener('click', function () {
+  const boxes = createBoxes(amount);
+  boxesWrapper.append(...boxes);
+});
 
-console.log(getCommonElements([1, 2, 3], [2, 4])); //возвращает [2].
-console.log(getCommonElements([1, 2, 3], [2, 1, 17, 19])); //возвращает [1, 2].
-console.log(getCommonElements([24, 12, 27, 3], [12, 8, 3, 36, 27])); //возвращает [12, 27, 3].
-console.log(getCommonElements([10, 20, 30, 40], [4, 30, 17, 10, 40])); //возвращает [10, 30, 40].
-console.log(getCommonElements([1, 2, 3], [10, 20, 30])); //возвращает [].
+function createBoxes(amount) {
+  boxesWrapper.innerHTML = '';
+  return [...Array(amount)]
+    .map((_, idx) => ++idx)
+    .map(i => {
+      const newDivBoxes = document.createElement('div');
+      newDivBoxes.style.backgroundColor = `${
+        '#' +
+        (Math.random().toString(16) + '000000').substring(2, 8).toUpperCase()
+      }`;
+      newDivBoxes.style.width = `${(i - 1) * 10 + 30}px`;
+      newDivBoxes.style.height = `${(i - 1) * 10 + 30}px`;
+      newDivBoxes.style.marginTop = `${30}px`;
+
+      return newDivBoxes;
+    });
+}
+btnToClear.addEventListener('click', function () {
+  boxesWrapper.innerHTML = '';
+});
