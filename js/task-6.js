@@ -31,10 +31,7 @@ const minInputlength = +input.getAttribute('data-length');
 input.addEventListener('blur', onInputBlur);
 
 function onInputBlur(event) {
-  // console.log('Инпут потерял фокус - событие blur');
   let inputValue = event.target.value.length;
-  // console.log(inputValue);
-  // console.dir(event.target);
   if (inputValue === minInputlength) {
     event.target.classList.add('valid');
     event.target.classList.remove('invalid');
