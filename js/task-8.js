@@ -23,7 +23,6 @@ btnToСreate.addEventListener('click', function () {
 });
 
 function createBoxes(amount) {
-  boxesWrapper.innerHTML = '';
   return [...Array(amount)]
     .map((_, idx) => ++idx)
     .map(i => {
