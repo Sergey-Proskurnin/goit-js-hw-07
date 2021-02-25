@@ -16,11 +16,6 @@ const ingredients = [
   'Приправы',
 ];
 const ingredientsList = document.querySelector('#ingredients');
-console.log(ingredientsList);
-// const newItemList = document.createElement('li');
-// console.log(newItemList);
-// newItemList.classList.add('list-item');
-// newItemList.textContent = ingredient;
 const makeIngredientsItemOption = newIngredients => {
   return newIngredients.map((ingredient, i) => {
     const newItemList = document.createElement('li');
