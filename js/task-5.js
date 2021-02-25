@@ -14,8 +14,7 @@ const ref = {
 ref.input.addEventListener('input', onInputChange);
 
 function onInputChange(event) {
-  if (event.currentTarget.value === '') {
-    return (ref.textSpan.textContent = 'незнакомец');
-  }
-  return (ref.textSpan.textContent = event.currentTarget.value);
+  return event.currentTarget.value === ''
+    ? (ref.textSpan.textContent = 'незнакомец')
+    : (ref.textSpan.textContent = event.currentTarget.value);
 }
