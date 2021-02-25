@@ -7,14 +7,13 @@
 // <br />
 // <span id="text">Абракадабра!</span>
 
-const input = document.querySelector('#font-size-control')
-// console.dir(input);
-const span = document.querySelector('#text')
+const input = document.querySelector('#font-size-control');
+
+const span = document.querySelector('#text');
 input.addEventListener('input', onInputRange);
 
 function onInputRange(evens) {
   let startValueRenge = +evens.target.value;
-  // console.log(startValueRenge);
-  span.style.fontSize = `${startValueRenge + 50}%`
-  // console.log(span);
+
+  span.style.fontSize = `${startValueRenge + 50}%`;
 }
