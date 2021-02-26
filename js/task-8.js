@@ -9,10 +9,14 @@ inputValue.addEventListener('input', onVelueBoxes);
 
 function onVelueBoxes(evens) {
   amount = +evens.target.value;
+  ;
   return amount;
 }
-
+console.log(amount)
 btnToСreate.addEventListener('click', function () {
+ if ( amount === undefined ) {
+   amount = 0
+ }
   const boxes = createBoxes(amount);
   boxesWrapper.append(...boxes);
 });
