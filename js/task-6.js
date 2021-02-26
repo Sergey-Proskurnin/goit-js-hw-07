@@ -25,9 +25,7 @@
 
 const input = document.querySelector('#validation-input');
 const minInputlength = +input.getAttribute('data-length');
-// console.log(input);
-// console.log(minInputlength);
-// input.addEventListener('focus', onInputFocus);
+
 input.addEventListener('blur', onInputBlur);
 
 function onInputBlur(event) {
